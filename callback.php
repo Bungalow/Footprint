@@ -12,11 +12,12 @@
 	set_time_limit(120);
 	require_once('header.php');
 	
-	$consumer_key = "HF0QSB4B5TVXKYUPWEGR4HQMWV23OZABRZUQR0VJZSISYTVC";
-	$consumer_secret = "3EEYW01AEP0ANE40IHGYOFVRUZPLTLDCMBWRYSCDZZKSKOWT";
+	require_once('config.php'); // instantiates key and secret (hopefully)
 	require_once('EpiCurl.php');
 	require_once('EpiOAuth.php');
 	require_once('EpiFoursquare.php');
+	
+	
 
 	$foursquareObj = new EpiFoursquare($consumer_key, $consumer_secret);
 	
@@ -30,8 +31,8 @@
 	$foursquareObj->setToken($_SESSION['oauth_token'], $_SESSION['secret']);
 	
 	//get user info
-	if (mysql_connect("hostname", "dbusername", "dbpass")) {
-		if (mysql_selectdb("footprint")) {
+	if (mysql_connect($db_host, $db_user, $db_pass)) {
+		if (mysql_selectdb($db_name)) {
 			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='self'");
 			$selfPowMileage = round(mysql_fetch_object($result)->mileagesum,2);
 			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='mass'");
@@ -83,8 +84,8 @@
 		
 		//ideally, these items should be stored in the Footprint db to save on 4sq API calls
 		//hardcoded homebase
-		$homebase = $foursquareObj->get_venue(array("vid"=>4500522));
-		$homebaseVID = 4500522;
+		$homebase = $foursquareObj->get_venue(array("vid"=>$homebase_vid));
+		// $homebaseVID = 4500522; this should now be instantiated in config.php
 		$homebaseGeoLat = $homebase->venue->geolat;
 		$homebaseGeoLong = $homebase->venue->geolong;
 		$homebaseURL = $homebase->venue->short_url;
@@ -107,8 +108,8 @@
 		
 		//if there are, get the most recent record's timestamp and set it as sinceid as option in history query
 		
-		if (mysql_connect("hostname", "dbusername", "dbpass")) {
-			if (mysql_selectdb("footprint")) {
+		if (mysql_connect($db_host, $db_user, $db_pass)) {
+			if (mysql_selectdb($db_name)) {
 				$destinationsQuery = mysql_query("select foursquarecheckinid from destinations where userid=".$_SESSION['currentUserID']." order by foursquarecheckinid desc");
 				if (mysql_num_rows($destinationsQuery) == 0) {
 					$sinceID = "";
@@ -158,7 +159,7 @@
 		
 		//this data will come from the application database
 		//change numVenues to a default (20)
-		if (mysql_selectdb("footprint")) {
+		if (mysql_selectdb($db_name)) {
 			$result = mysql_query("select * from destinations where userid='".$_SESSION['currentUserID']."' order by foursquarecheckinid desc limit 25");
 			$numRows = mysql_num_rows($result);
 			if ($numRows > 0) {

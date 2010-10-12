@@ -2,10 +2,10 @@
 	session_start();
 	
 	require_once('header.php');
-	
-	$consumer_key = "HF0QSB4B5TVXKYUPWEGR4HQMWV23OZABRZUQR0VJZSISYTVC";
-	$consumer_secret = "3EEYW01AEP0ANE40IHGYOFVRUZPLTLDCMBWRYSCDZZKSKOWT";
-	$loginurl = "";
+	require_once('config.php');
+	// $consumer_key = "HF0QSB4B5TVXKYUPWEGR4HQMWV23OZABRZUQR0VJZSISYTVC";
+	// $consumer_secret = "3EEYW01AEP0ANE40IHGYOFVRUZPLTLDCMBWRYSCDZZKSKOWT";
+	// $loginurl = "";
 	//foursquare-async library files
 	require_once('EpiCurl.php');
 	require_once('EpiOAuth.php');
@@ -13,10 +13,10 @@
 	
 	//validate footprint login
 
-	if (mysql_connect("hostname", "dbusername", "dbpass")) {
+	if (mysql_connect($db_host, $db_user, $db_pass)) {
 		//echo("connected to db");
 		//connect to database
-		if (mysql_selectdb("footprint")) {
+		if (mysql_selectdb($db_name)) {
 			//try to validate user info
 			$loginExistsQuery = mysql_query("select * from users where username='mydogisarobot@gmail.com' and footprintpass=password('testerpass')");
 			if (mysql_num_rows($loginExistsQuery) == 0) {

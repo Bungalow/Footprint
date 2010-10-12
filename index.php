@@ -13,9 +13,10 @@
 
 
 	//foursquare API key/secret
-	$consumer_key = "";
-	$consumer_secret = "";
-	$loginurl = "";
+	//$consumer_key = "";
+	//$consumer_secret = "";
+	require_once('config.php');
+	// $loginurl = "";
 	
 	try {
 	  $foursquareObj = new EpiFoursquare($consumer_key, $consumer_secret);

@@ -4,8 +4,8 @@
 	//nab variables
 	$queryType = $_POST['queryType'];
 	
-	if (mysql_connect("hostname", "dbusername", "dbpass")) {
-		if (mysql_selectdb("dbname")) {
+	if (mysql_connect($db_host, $db_user, $db_pass)) {
+		if (mysql_selectdb($db_bame)) {
 			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='self'");
 			$selfPowMileage = round(mysql_fetch_object($result)->mileagesum,2);
 			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='mass'");
