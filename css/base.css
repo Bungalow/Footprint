@@ -1,0 +1,107 @@
+body {
+	margin:0 12px;
+	padding:0;
+	font:11px Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	margin-bottom:4px;
+}
+
+.noteText {
+	font-size:10px;
+}
+
+label {
+	display:block;
+}
+
+.inputRow {
+	display:block;
+	margin:0 0 16px 0;
+}
+
+#headerInfo {
+	margin:12px 0;
+}
+
+#headerInfo #mileageDetails, #headerInfo #accomplishmentsCont {
+	float:left;
+	width:375px;
+}
+
+#headerInfo #accomplishmentsCont .accomplishment {
+	font-size:13px;
+}
+
+#headerInfo .mileageSum {
+	font-weight:bold;
+}
+
+#headerInfo #totalMileage {
+	font-size:16px;
+}
+
+
+table#destinationTable {
+	padding:0;
+	margin:12px 0 0 0;
+	border-collapse:collapse;
+}
+
+table#destinationTable th {
+	text-align:left;
+	font-weight:normal;
+	font-size:11px;
+	padding:0 6px 6px 6px;
+	border-bottom:1px solid #000;
+}
+
+table#destinationTable th#destinationNameCol {
+	
+}
+
+table#destinationTable th#checkInDateCol {
+	width:110px;
+}
+
+table#destinationTable th#startPointCol {
+	
+}
+
+table#destinationTable th#mileageCol {
+	width:60px;
+}
+
+table#destinationTable th#transportModeCol {
+	
+}
+
+table#destinationTable th#updateCol {
+	border-bottom:0px;
+}
+
+table#destinationTable .ignoreCheckInCell {
+	width:75px;
+	text-align:center;
+}
+
+table#destinationTable .lastStopCell {
+	text-align:center;
+}
+
+table#destinationTable td {
+	padding:6px;
+}
+
+table#destinationTable td.mileageCell {
+	text-align:right;
+}
+
+table#destinationTable span.progressIndicator {
+	padding-left:12px;
+}
+
+table#destinationTable input.updateDestinationInfoButton {
+	margin-left:12px;
+}
