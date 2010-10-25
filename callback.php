@@ -10,7 +10,7 @@
 	$_SESSION['currentUserID']=1;
 	
 	set_time_limit(120);
-	require_once('header.php');
+	require_once('template/header.php');
 	
 	require_once('config.php'); // instantiates key and secret (hopefully)
 	require_once('lib/EpiCurl.php');
@@ -284,5 +284,5 @@
 	}
 
 
-	require_once('footer.php');
+	require_once('template/footer.php');
 ?>
