@@ -105,7 +105,7 @@ function saveDestinationInfo(tableRow) {
 	var ignoreCheckIn = tableRow.find('input.ignoreCheckinCheckbox').attr("checked") ? 1 : 0;
 	var destinationUpdated = "";
 	$.ajax({
-		url:'SaveDestinationInfo.php',
+		url:'api/SaveDestinationInfo.php',
 		type:"POST",
 		data:{
 			foursquareCheckInID:foursquareCheckInID, 
@@ -148,7 +148,7 @@ function saveDestinationInfo(tableRow) {
 function updateMileageTotals() {
 	var mileageArray = "";
 	$.ajax({
-		url:'FootprintDataUpdate.php',
+		url:'api/FootprintDataUpdate.php',
 		type:"POST",
 		data:{
 			queryType:"mileage"

@@ -13,7 +13,8 @@
 	
 	//open db connection
 	
-	require_once('config.php');
+	require_once('../config.php');
+	
 	if (mysql_connect($db_host, $db_user, $db_pass)) {
 		if (mysql_selectdb($db_name)) {
 			$result = mysql_query($updateQuery);
