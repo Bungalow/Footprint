@@ -1,15 +1,12 @@
 <?php
 	session_start();
 	
-	require_once('header.php');
+	require_once('template/header.php');
 	require_once('config.php');
-	// $consumer_key = "HF0QSB4B5TVXKYUPWEGR4HQMWV23OZABRZUQR0VJZSISYTVC";
-	// $consumer_secret = "3EEYW01AEP0ANE40IHGYOFVRUZPLTLDCMBWRYSCDZZKSKOWT";
-	// $loginurl = "";
-	//foursquare-async library files
-	require_once('EpiCurl.php');
-	require_once('EpiOAuth.php');
-	require_once('EpiFoursquare.php');
+	// foursquare-async library files
+	require_once('lib/EpiCurl.php');
+	require_once('lib/EpiOAuth.php');
+	require_once('lib/EpiFoursquare.php');
 	
 	//validate footprint login
 
@@ -77,5 +74,5 @@
 	
 	
 
-	require_once('footer.php');
+	require_once('template/footer.php');
 ?>

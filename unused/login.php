@@ -1,5 +1,5 @@
 <?php
-	require_once('header.php');
+	require_once('template/header.php');
 ?>
 	<h1>Footprint</h1>
 	How you get to where you go affects the environment
@@ -28,5 +28,5 @@
 
 
 <?php
-	require_once('footer.php');
+	require_once('template/footer.php');
 ?>
