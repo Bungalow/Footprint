@@ -44,4 +44,4 @@ You should now be able to use the app normally by visiting:
     
 ## Cleaned Up Re-Structuring
 
-All "library" files (such as those used to talk to foursquare) live in `/lib`. Main reachable pages (such as the index or the callback) live in the root `/`. Functions only called by ajax within other pages live in `/api`. Files included for templating and layout purposes live in `/template`.
+All "library" files (such as those used to talk to foursquare) live in `/lib`. Main reachable pages (such as the index or the callback) live in the root `/`. Functions only called by ajax within other pages live in `/api`. Files included for templating and layout purposes live in `/template`. Unused older code (such as the non-implemented login system) is in `/unused`.
