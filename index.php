@@ -1,22 +1,16 @@
 <?php
 	session_start();
 	
-	require_once('EpiCurl.php');
-	require_once('EpiOAuth.php');
-	require_once('EpiFoursquare.php');
-	
+	require_once('lib/EpiCurl.php');
+	require_once('lib/EpiOAuth.php');
+	require_once('lib/EpiFoursquare.php');
 	
 	//check session variables
 	
 	session_destroy();
 	session_start();
 
-
-	//foursquare API key/secret
-	//$consumer_key = "";
-	//$consumer_secret = "";
 	require_once('config.php');
-	// $loginurl = "";
 	
 	try {
 	  $foursquareObj = new EpiFoursquare($consumer_key, $consumer_secret);

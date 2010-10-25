@@ -13,9 +13,9 @@
 	require_once('header.php');
 	
 	require_once('config.php'); // instantiates key and secret (hopefully)
-	require_once('EpiCurl.php');
-	require_once('EpiOAuth.php');
-	require_once('EpiFoursquare.php');
+	require_once('lib/EpiCurl.php');
+	require_once('lib/EpiOAuth.php');
+	require_once('lib/EpiFoursquare.php');
 	
 	
 

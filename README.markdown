@@ -40,4 +40,8 @@ If mysql is properly installed and you put in the correct credentials, the scrip
 
 You should now be able to use the app normally by visiting:
 
-    http://localhost:8888/
+    http://localhost:8888/        
+    
+## Cleaned Up Re-Structuring
+
+All "library" files (such as those used to talk to foursquare) live in `/lib`. Main reachable pages (such as the index or the callback) live in the root `/`. Functions only called by ajax within other pages live in `/api`. Files included for templating and layout purposes live in `/template`.
