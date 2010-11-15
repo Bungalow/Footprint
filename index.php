@@ -86,9 +86,9 @@
 </div>
 <div class="pxspace"></div>
 <div class="navbar">
-	<a href="http://localhost"><div class="button">Home</div></a>
-	<a href="feedback.html"><div class="button">FeedBack</div></a>
-	<a href="help.html"><div class="button">Help</div></a>
+	<a href="/"><div class="button">Home</div></a>
+	<a href="/feedback.html"><div class="button">FeedBack</div></a>
+	<a href="/help.html"><div class="button">Help</div></a>
 </div>
 <div class="login">
 <img src="img/greenlogin.png"/>
@@ -127,7 +127,7 @@
 	echo "<br />";
 	//var_dump($_SESSION['secret']);
 ?></p>
-<p>Not a FourSquare User it's ok join by clinking below:</p>
+<p>Not a FourSquare User it's ok join by clicking below:</p>
 			<img src="img/greennew.png"/><br/>
 			<a href="http://foursquare.com"><input type="button" name="groovybtn2" class="groovy" value="Join Foursquare" title=""></a>
 </div>

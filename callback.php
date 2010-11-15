@@ -79,12 +79,12 @@
 </div>
 <div class="pxspace"></div>
 <div class="navbar">
-	<a href="http://localhost"><div class="button">Home</div></a>
-	<a href="http://localhost"><div class="button">Mypage</div></a>
+	<a href="/"><div class="button">Home</div></a>
+	<a href="/"><div class="button">Mypage</div></a>
 	<a href="http://foursquare.com/mobile/checkin"><div class="button">Check-In</div></a>
-	<a href="http://localhost"><div class="button">Stats</div></a>
-	<a href="feedback.html"><div class="button">FeedBack</div></a>
-	<a href="help.html"><div class="button">Help</div></a>
+	<a href="/"><div class="button">Stats</div></a>
+	<a href="/feedback.html"><div class="button">FeedBack</div></a>
+	<a href="/help.html"><div class="button">Help</div></a>
 </div>
 <div class="userinfo">
 	<img src="img/me.jpg"/>

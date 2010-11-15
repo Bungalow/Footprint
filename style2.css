@@ -55,18 +55,25 @@
 		background-color:rgba(0, 0, 0, 0.1);
 		border: 2px solid rgb(0, 100, 0);
 		display:inline-block;
-		padding:11px 10px 6px;
+		padding:9px 10px 8px;
 		margin:1px;
 		text-align:center;
 	}
 	.navbar  a{
-		font-size:12px;
+		/*border-left:1px dotted rgb(0, 100, 0);*/
+		border-left:1px dotted black;
 		color:black;
+		display:inline-block;
+		font-size:14px;
+		margin-right:-2px;
+		padding-left:2px;
 		text-align:center;
 		text-decoration:none;
+		font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;
+		font-weight:bold;
 	}
 	.navbar  a:hover{
-		font-size:12px;
+		font-size:14px;
 		text-align:center;
 		color:beige;
 	}
@@ -75,6 +82,7 @@
 	}
 	.navbar p{
 		text-align:center;
+		float:left;
 	}
 	.userinfo{
 		position:absolute;
@@ -177,9 +185,11 @@
 		font-family:"Helvetica";
 		font-weight:bold;
 		color:#FFFFFF;
-		background-color:#666666;
+		/*background-color:#666666;*/
+		background-color:#329D27;
 		border-style:double;
-		border-color:#330000;
+		/*border-color:#330000;*/
+		border-color:rgb(0, 100, 0);
 		-moz-border-radius:100px 10px 100px 10px;
 		-moz-box-shadow:0 1px 10px #3F3F3F;
 	}
@@ -187,11 +197,25 @@
 		font-family:"Helvetica";
 		font-weight:bold;
 		color:#FFFFFF;
-		background-color:#666666;
+		/*background-color:#666666;*/
+		background-color:#329D27;
 		border-style:double;
-		border-color:#330000;
+		/*border-color:#330000;*/
+		border-color:rgb(0, 100, 0);
 		-moz-border-radius:100px 10px 100px 10px;
 		-moz-box-shadow:0 1px 10px #3F3F3F;
+	}
+	input:hover{
+		font-family:"Helvetica";
+		font-weight:bold;
+		color:#FFFFFF;
+		/*background-color:#666666;*/
+		background-color:#329D27;
+		border-style:double;
+		/*border-color:#330000;*/
+		border-color:black;
+		-moz-border-radius:100px 10px 100px 10px;
+		-moz-box-shadow:0 1px 10px white;
 	}
 	#stat{
 		-moz-border-radius:2px 2px 2px 2px;
