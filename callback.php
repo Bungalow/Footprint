@@ -1,3 +1,119 @@
+<html>
+<title>FootPrint:Usage</title>
+<script src="/js/jquery-1.3.2.js" type="text/javascript"></script>
+		<script src="/js/jquery.json-1.3.js" type="text/javascript"></script>
+		<script src="/js/base.js" type="text/javascript"></script>
+<head>
+<LINK href="style2.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--<div class="header">
+	<a href="http://localhost">Logout</a>
+	<a href="help.html">Help</a>
+	<a href="mypage.html">My Page</a>
+	<a href="http://localhost/">Home</a>
+</div>-->
+<!--<div id="mypageheader">
+	<a href="http://localhost">Logout</a>
+	<a href="help.html">Help</a>
+	<a href="mypage.html">Find Friends</a>
+	<a href="http://localhost/">Username</a>
+	<div class="clear"></div>
+</div>
+<div class="toplogo">
+			<img src="img/logo3.gif"/>
+			<h2>Footprint: Username</h2>
+			<div class="clear"></div>
+</div>
+<div class="navbar">
+	<a href="http://localhost/"><img src="img/ghome.png"/></a>
+	<a href="mypage.html"><img src="img/user.png"/></a>
+	<a href="mypage.html"><img src="img/greengraph.png"/></a>
+	<a href="http://foursquare.com/mobile/checkin"><img src="img/greenfoot.png"/></a>
+	<a href="friends.html"><img src="img/friend.png"/></a>
+	<a href="http://localhost"><img src="img/greenlogout.png"/></a>
+</div>
+<br/><br/>
+<div id="mypagetop">
+	<div id="left">
+		<img src="img/me.jpg"/>
+		<div class="inner">
+		<h2>Username</h2>
+		<div id="stat">
+			<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	</div>
+	<div id="right">
+		<h2>Achievements:</h2><br/>
+		<div class="clear"></div>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<div class="clear"></div>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+<br/><br/><br/><br/>-->
+<div class="header">
+<img src="img/greenfoot2.png"/>
+<h1>Footprint</h1>
+</div>
+<div id="mypageheader">
+	<a href="http://localhost">Username</a>
+	<a href="">Blah</a>
+	<a href="">Find Friends</a>
+	<a href="http://localhost/">Logout</a>
+	<div class="clear"></div>
+</div>
+<div class="pxspace"></div>
+<div class="navbar">
+	<a href="http://localhost"><div class="button">Home</div></a>
+	<a href="http://localhost"><div class="button">Mypage</div></a>
+	<a href="http://foursquare.com/mobile/checkin"><div class="button">Check-In</div></a>
+	<a href="http://localhost"><div class="button">Stats</div></a>
+	<a href="feedback.html"><div class="button">FeedBack</div></a>
+	<a href="help.html"><div class="button">Help</div></a>
+</div>
+<div class="userinfo">
+	<img src="img/me.jpg"/>
+	<div class="inner">
+		<h1>Username</h1><br/>
+		<div id="stat">
+			<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="achievments">
+	<h1>Achievments</h1>
+	<div class="clear"></div>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
+		<div class="clear"></div>
+</div>
+<div class="footprint">
 <?php
 	session_start();
 	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
@@ -45,9 +161,9 @@
 	
 	
 ?>
-
-	<h2>Footprint</h2>
-	<i>How you get to where you go affects the environment</i>
+	<!--<h2>Footprint:UserName</h2>-->
+	<h2>Your Footprint:</h2>
+	<i>How you get to where you go affects the environment.</i>
 	<div id="headerInfo">
 		<div id="mileageDetails">
 			<div class='headerRow'>Total Miles: <span id='totalMileage' class='mileageSum'><?php echo($totalMileage);?></span></div>
@@ -284,5 +400,11 @@
 	}
 
 
-	require_once('template/footer.php');
+	//require_once('template/footer.php');
 ?>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
