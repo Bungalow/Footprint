@@ -1,0 +1,10 @@
+<?php
+  $consumer_key = "IM1HNNU0HTESS2PIRSKKPREBOJNMNTTZFOJ5XAKQDNEPLZXH";
+  $consumer_secret = "ZFM4GYVZATYUD3NGYEVYCWWKBCGGHYO2X2P0IQDP1D0MDM0N";
+  $loginurl = ""; // leave blank
+  $homebase_vid = 10132186; // this may be built into the app later
+  $db_host = "localhost"; // change if using another host
+  $db_user = "root"; // set to your database user
+  $db_pass = ""; // duh
+  $db_name = "footprint"; // DO NOT CHANGE THIS
+?>
