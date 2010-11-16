@@ -84,11 +84,12 @@
 	<a href="/">Logout</a>
 	<div class="clear"></div>
 </div>
-<div class="pxspace"></div>
 <div class="navbar">
-	<a href="/"><div class="button">Home</div></a>
-	<a href="/feedback.html"><div class="button">FeedBack</div></a>
-	<a href="/help.html"><div class="button">Help</div></a>
+	<div class="in">
+		<a href="/"><div class="button">Home</div></a>
+		<a href="/feedback.html"><div class="button">FeedBack</div></a>
+		<a href="/help.html"><div class="button">Help</div></a>
+	</div>
 </div>
 <div class="login">
 <img src="img/greenlogin.png"/>

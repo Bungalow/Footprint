@@ -77,21 +77,23 @@
 	<a href="/">Logout</a>
 	<div class="clear"></div>
 </div>
-<div class="pxspace"></div>
 <div class="navbar">
+<div class="in">
 	<a href="/"><div class="button">Home</div></a>
 	<a href="/"><div class="button">Mypage</div></a>
 	<a href="http://foursquare.com/mobile/checkin"><div class="button">Check-In</div></a>
-	<a href="/"><div class="button">Stats</div></a>
+	<a href="/stats.php"><div class="button">Stats</div></a>
 	<a href="/feedback.html"><div class="button">FeedBack</div></a>
 	<a href="/help.html"><div class="button">Help</div></a>
+</div>
 </div>
 <div class="userinfo">
 	<img src="img/me.jpg"/>
 	<div class="inner">
 		<h1>Username</h1><br/>
 		<div id="stat">
-			<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
+			<p><b>Level:</b> 70 <b>|Rank:</b> Nature God</p>
+			<p>Stats go here.</p>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -341,14 +343,12 @@
 						echo("<select class='startPointSelector'".$startPointDisabled."><option value='-1'>select start point...</option>");
 						echo("<option value='home'".selectValueChecker($currentVenue->startpoint, "home").">Homebase</option>");
 						echo("<option value='prev'".selectValueChecker($currentVenue->startpoint, "prev").">Previous Check In</option></select></td>\n");
-
 						echo("<td class='mileageCell'>".round($currentVenue->mileage,2)."</td>\n");
 						
 						echo("<td><select class='transportationModeSelector'".$transportModeDisabled."><option value='0'>select transportation...</option>");
 						echo("<option value='self'".selectValueChecker($currentVenue->transportmode, "self").">Self-Powered</option>");
 						echo("<option value='mass'".selectValueChecker($currentVenue->transportmode, "mass").">Mass Transportation</option>");
 						echo("<option value='car'".selectValueChecker($currentVenue->transportmode, "car").">Car</option></select></td>\n");
-
 						$lastStopChecked = ($currentVenue->laststop == 1 ? " checked='checked'" : ""); 
 						echo("<td class='lastStopCell'><input type='checkbox' class='lastStopCheckbox'".$lastStopChecked.$lastStopDisabled." /></td>\n");
 						
