@@ -1,99 +1,240 @@
-<html>
-<title>FootPrint:Usage</title>
-<script src="/js/jquery-1.3.2.js" type="text/javascript"></script>
-		<script src="/js/jquery.json-1.3.js" type="text/javascript"></script>
-		<script src="/js/base.js" type="text/javascript"></script>
-<head>
-<LINK href="style2.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<!--<div class="header">
-	<a href="http://localhost">Logout</a>
-	<a href="help.html">Help</a>
-	<a href="mypage.html">My Page</a>
-	<a href="http://localhost/">Home</a>
-</div>-->
-<!--<div id="mypageheader">
-	<a href="http://localhost">Logout</a>
-	<a href="help.html">Help</a>
-	<a href="mypage.html">Find Friends</a>
-	<a href="http://localhost/">Username</a>
-	<div class="clear"></div>
-</div>
-<div class="toplogo">
-			<img src="img/logo3.gif"/>
-			<h2>Footprint: Username</h2>
-			<div class="clear"></div>
-</div>
-<div class="navbar">
-	<a href="http://localhost/"><img src="img/ghome.png"/></a>
-	<a href="mypage.html"><img src="img/user.png"/></a>
-	<a href="mypage.html"><img src="img/greengraph.png"/></a>
-	<a href="http://foursquare.com/mobile/checkin"><img src="img/greenfoot.png"/></a>
-	<a href="friends.html"><img src="img/friend.png"/></a>
-	<a href="http://localhost"><img src="img/greenlogout.png"/></a>
-</div>
-<br/><br/>
-<div id="mypagetop">
-	<div id="left">
-		<img src="img/me.jpg"/>
-		<div class="inner">
-		<h2>Username</h2>
-		<div id="stat">
-			<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
-		</div>
-		<div class="clear"></div>
-	</div>
-	</div>
-	<div id="right">
-		<h2>Achievements:</h2><br/>
-		<div class="clear"></div>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<div class="clear"></div>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<img src="img/greenmedal.png"/><img src="img/redmedal.png"/><img src="img/bluemedal.png"/>
-		<div class="clear"></div>
-	</div>
-	<div class="clear"></div>
-</div>
-<br/><br/><br/><br/>-->
-<div class="header">
-<img src="img/greenfoot2.png"/>
-<h1>Footprint</h1>
-</div>
-<div id="mypageheader">
-	<a href="/">Username</a>
-	<a href="/">Blah</a>
-	<a href="/">Find Friends</a>
-	<a href="/">Logout</a>
-	<div class="clear"></div>
-</div>
-<div class="navbar">
-<div class="in">
-	<a href="/"><div class="button">Home</div></a>
-	<a href="/"><div class="button">Mypage</div></a>
-	<a href="http://foursquare.com/mobile/checkin"><div class="button">Check-In</div></a>
-	<a href="/stats.php"><div class="button">Stats</div></a>
-	<a href="/feedback.html"><div class="button">FeedBack</div></a>
-	<a href="/help.html"><div class="button">Help</div></a>
-</div>
-</div>
+
+<?php
+	session_start();
+	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
+	header("cache-control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+	header("cache-control: post-check=0, pre-check=0", false);
+	header("cache-control: max-age=0");
+	header("Pragma: no-cache");
+	
+	set_time_limit(120);
+	require_once('template/header.php');
+	
+	require_once('config.php'); // instantiates key and secret (hopefully)
+	require_once('lib/EpiCurl.php');
+	require_once('lib/EpiOAuth.php');
+	require_once('lib/EpiFoursquare.php');
+	
+	$foursquareObj = new EpiFoursquare($consumer_key, $consumer_secret);
+	
+	if (!isset($_SESSION['oauth_token'])) {
+		$foursquareObj->setToken($_REQUEST['oauth_token'],$_SESSION['secret']);
+		$token = $foursquareObj->getAccessToken();
+		$_SESSION['oauth_token'] = $token->oauth_token;
+		$_SESSION['secret'] = $token->oauth_token_secret;
+	}
+	
+	$foursquareObj->setToken($_SESSION['oauth_token'], $_SESSION['secret']);
+	
+	// User info
+	$params = array("badges"=>1, "mayor"=>1);
+	$foursquareUser = $foursquareObj->get_user($params);
+	$user_info = $foursquareUser->response['user'];
+	$_SESSION['currentUserID'] = $user_info['id'];
+	
+	//get user info
+	if (mysql_connect($db_host, $db_user, $db_pass)) {
+		if (mysql_selectdb($db_name)) {
+			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='self'");
+			$selfPowMileage = round(mysql_fetch_object($result)->mileagesum,2);
+			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='mass'");
+			$massTransMileage = round(mysql_fetch_object($result)->mileagesum,2);
+			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='car'");
+			$carMileage = round(mysql_fetch_object($result)->mileagesum,2);
+			$totalMileage = $selfPowMileage + $massTransMileage + $carMileage;
+		}
+	}
+	
+	
+?>
 <div class="userinfo">
 	<img src="img/me.jpg"/>
 	<div class="inner">
-		<h1>Username</h1><br/>
+		<?php
+		//print_r($foursquareUser->response['user']);
+		
+// 		(
+//     [id] => 3773696
+//     [firstname] => Zac
+//     [lastname] => Clark
+//     [friendstatus] => self
+//     [homecity] => Boulder, CO
+//     [photo] => http://playfoursquare.s3.amazonaws.com/userpix_thumbs/PVIXGAYSBEVU44IT.jpg
+//     [gender] => male
+//     [email] => hi+foursquare@zacclark.com
+//     [types] => Array
+//         (
+//             [0] => user
+//         )
+//  
+//     [settings] => Array
+//         (
+//             [pings] => off
+//             [sendtotwitter] => 
+//             [sendtofacebook] => 
+//         )
+//  
+//     [status] => Array
+//         (
+//             [friendrequests] => 0
+//         )
+//  
+//     [checkin] => Array
+//         (
+//             [id] => 268977836
+//             [created] => Tue, 16 Nov 10 21:41:14 +0000
+//             [timezone] => America/Denver
+//             [venue] => Array
+//                 (
+//                     [id] => 102512
+//                     [name] => Engineering Center - UCB
+//                     [primarycategory] => Array
+//                         (
+//                             [id] => 78997
+//                             [fullpathname] => Arts & Entertainment:Strip Club
+//                             [nodename] => Strip Club
+//                             [iconurl] => http://foursquare.com/img/categories/arts_entertainment/stripclub.png
+//                         )
+//  
+//                     [address] => Engineering Center
+//                     [city] => Boulder
+//                     [state] => CO
+//                     [zip] => 80309
+//                     [verified] => 
+//                     [geolat] => 40.0070631
+//                     [geolong] => -105.262544
+//                     [hasTodo] => false
+//                 )
+//  
+//             [display] => Zac C. @ Engineering Center - UCB
+//         )
+//  
+//     [badges] => Array
+//         (
+//             [0] => Array
+//                 (
+//                     [id] => 1
+//                     [name] => Newbie
+//                     [icon] => http://foursquare.com/img/badge/newbie.png
+//                     [description] => Congrats on your first check-in!
+//                 )
+//  
+//             [1] => Array
+//                 (
+//                     [id] => 2
+//                     [name] => Adventurer
+//                     [icon] => http://foursquare.com/img/badge/adventurer.png
+//                     [description] => You've checked into 10 different venues!
+//                 )
+//  
+//             [2] => Array
+//                 (
+//                     [id] => 3
+//                     [name] => Explorer
+//                     [icon] => http://foursquare.com/img/badge/explorer.png
+//                     [description] => You've checked into 25 different venues!
+//                 )
+//  
+//             [3] => Array
+//                 (
+//                     [id] => 7
+//                     [name] => Local
+//                     [icon] => http://foursquare.com/img/badge/local.png
+//                     [description] => You've been at the same place 3x in one week!
+//                 )
+//  
+//             [4] => Array
+//                 (
+//                     [id] => 8
+//                     [name] => Super User
+//                     [icon] => http://foursquare.com/img/badge/superuser.png
+//                     [description] => That's 30 check-ins in a month for you!
+//                 )
+//  
+//         )
+//  
+//     [mayorcount] => 4
+//     [mayor] => Array
+//         (
+//             [0] => Array
+//                 (
+//                     [id] => 10555155
+//                     [name] => 2554 Paintbrush
+//                     [address] => 
+//                     [city] => 
+//                     [state] => 
+//                     [verified] => 
+//                     [geolat] => 40.001458
+//                     [geolong] => -105.129957
+//                     [hasTodo] => false
+//                 )
+//  
+//             [1] => Array
+//                 (
+//                     [id] => 10329439
+//                     [name] => 500 Manhattan
+//                     [primarycategory] => Array
+//                         (
+//                             [id] => 79132
+//                             [fullpathname] => Home / Work / Other:Home
+//                             [nodename] => Home
+//                             [iconurl] => http://foursquare.com/img/categories/building/home.png
+//                         )
+//  
+//                     [address] => 
+//                     [city] => 
+//                     [state] => 
+//                     [verified] => 
+//                     [geolat] => 39.996618
+//                     [geolong] => -105.22879
+//                     [hasTodo] => false
+//                 )
+//  
+//             [2] => Array
+//                 (
+//                     [id] => 11250505
+//                     [name] => Apex Movement Boulder
+//                     [address] => 
+//                     [city] => 
+//                     [state] => 
+//                     [verified] => 
+//                     [geolat] => 40.015073
+//                     [geolong] => -105.21908
+//                     [hasTodo] => false
+//                 )
+//  
+//             [3] => Array
+//                 (
+//                     [id] => 48092
+//                     [name] => Whole Foods
+//                     [primarycategory] => Array
+//                         (
+//                             [id] => 79235
+//                             [fullpathname] => Shops:Food & Drink:Grocery / Supermarket
+//                             [nodename] => Grocery / Supermarket
+//                             [iconurl] => http://foursquare.com/img/categories/shops/food_grocery.png
+//                         )
+//  
+//                     [address] => 2584 Baseline Rd
+//                     [crossstreet] => Broadway
+//                     [city] => Boulder
+//                     [state] => CO
+//                     [zip] => 80302
+//                     [verified] => 
+//                     [geolat] => 40.0002715
+//                     [geolong] => -105.261102
+//                     [hasTodo] => false
+//                 )
+//  
+//         )
+//  
+// )
+
+		?>
+		<h1><?php echo $user_info['firstname']; ?> <?php echo $user_info['lastname']; ?></h1><br/>
 		<div id="stat">
-			<p><b>Level:</b> 70 <b>|Rank:</b> Nature God</p>
-			<p>Stats go here.</p>
+			<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -116,53 +257,6 @@
 		<div class="clear"></div>
 </div>
 <div class="footprint">
-<?php
-	session_start();
-	header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); // Date in the past
-	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // always modified
-	header("cache-control: no-store, no-cache, must-revalidate"); // HTTP/1.1
-	header("cache-control: post-check=0, pre-check=0", false);
-	header("cache-control: max-age=0");
-	header("Pragma: no-cache");
-
-	$_SESSION['currentUserID']=1;
-	
-	set_time_limit(120);
-	require_once('template/header.php');
-	
-	require_once('config.php'); // instantiates key and secret (hopefully)
-	require_once('lib/EpiCurl.php');
-	require_once('lib/EpiOAuth.php');
-	require_once('lib/EpiFoursquare.php');
-	
-	
-
-	$foursquareObj = new EpiFoursquare($consumer_key, $consumer_secret);
-	
-	if (!isset($_SESSION['oauth_token'])) {
-		$foursquareObj->setToken($_REQUEST['oauth_token'],$_SESSION['secret']);
-		$token = $foursquareObj->getAccessToken();
-		$_SESSION['oauth_token'] = $token->oauth_token;
-		$_SESSION['secret'] = $token->oauth_token_secret;
-	}
-	
-	$foursquareObj->setToken($_SESSION['oauth_token'], $_SESSION['secret']);
-	
-	//get user info
-	if (mysql_connect($db_host, $db_user, $db_pass)) {
-		if (mysql_selectdb($db_name)) {
-			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='self'");
-			$selfPowMileage = round(mysql_fetch_object($result)->mileagesum,2);
-			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='mass'");
-			$massTransMileage = round(mysql_fetch_object($result)->mileagesum,2);
-			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='car'");
-			$carMileage = round(mysql_fetch_object($result)->mileagesum,2);
-			$totalMileage = $selfPowMileage + $massTransMileage + $carMileage;
-		}
-	}
-	
-	
-?>
 	<!--<h2>Footprint:UserName</h2>-->
 	<h2>Your Footprint:</h2>
 	<i>How you get to where you go affects the environment.</i>
