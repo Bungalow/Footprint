@@ -27,6 +27,11 @@ if ($_SESSION['currentUserID']) {
 	$foursquareObj = $_SESSION['4sq_obj'];
 }
 
+// make sure we can connect to the db
+
+if(!mysql_connect($db_host, $db_user, $db_pass)){die ("Could not connect to the DB");}
+if(!mysql_selectdb($db_name)){die("Could not select DB.");}
+
 // useful functions
 function tmpl($string) {
 	require("template/" . $string . ".php");

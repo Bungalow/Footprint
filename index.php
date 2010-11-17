@@ -33,17 +33,13 @@ tmpl('header');
 	
 	<?php
 	//get mileage info
-	if (mysql_connect($db_host, $db_user, $db_pass)) {
-		if (mysql_selectdb($db_name)) {
-			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='self'");
-			$selfPowMileage = round(mysql_fetch_object($result)->mileagesum,2);
-			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='mass'");
-			$massTransMileage = round(mysql_fetch_object($result)->mileagesum,2);
-			$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='car'");
-			$carMileage = round(mysql_fetch_object($result)->mileagesum,2);
-			$totalMileage = $selfPowMileage + $massTransMileage + $carMileage;
-		}
-	}
+	$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='self'");
+	$selfPowMileage = round(mysql_fetch_object($result)->mileagesum,2);
+	$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='mass'");
+	$massTransMileage = round(mysql_fetch_object($result)->mileagesum,2);
+	$result = mysql_query("select sum(mileage) as mileagesum from destinations where userid='".$_SESSION['currentUserID']."' and transportmode='car'");
+	$carMileage = round(mysql_fetch_object($result)->mileagesum,2);
+	$totalMileage = $selfPowMileage + $massTransMileage + $carMileage;
 	?>
 	
 	<div class="userinfo">
@@ -101,7 +97,6 @@ tmpl('header');
 		
 		//this data will come from the application database
 		//change numVenues to a default (20)
-		if (mysql_selectdb($db_name)) {
 			$result = mysql_query("select * from destinations where userid='".$_SESSION['currentUserID']."' order by foursquarecheckinid desc limit 25");
 			$numRows = mysql_num_rows($result);
 			if ($numRows > 0) {
@@ -191,7 +186,6 @@ tmpl('header');
 				</table>
 <?php
 			}
-		}
 ?>
 	
 <?php } ?>

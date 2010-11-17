@@ -53,17 +53,13 @@
 		
 		//if there are, get the most recent record's timestamp and set it as sinceid as option in history query
 		
-		if (mysql_connect($db_host, $db_user, $db_pass)) {
-			if (mysql_selectdb($db_name)) {
-				$destinationsQuery = mysql_query("select foursquarecheckinid from destinations where userid=".$_SESSION['currentUserID']." order by foursquarecheckinid desc");
-				if (mysql_num_rows($destinationsQuery) == 0) {
-					$sinceID = "";
-				}
-				else {
-					$resultRow = mysql_fetch_object($destinationsQuery);
-					$sinceID = $resultRow->foursquarecheckinid;
-				}
-			}
+		$destinationsQuery = mysql_query("select foursquarecheckinid from destinations where userid=".$_SESSION['currentUserID']." order by foursquarecheckinid desc");
+		if (mysql_num_rows($destinationsQuery) == 0) {
+			$sinceID = "";
+		}
+		else {
+			$resultRow = mysql_fetch_object($destinationsQuery);
+			$sinceID = $resultRow->foursquarecheckinid;
 		}
 		
 		//get recent checkins
@@ -92,10 +88,8 @@
 				$currentVenueGeoLat = $currentVenue->venue->geolat;
 				$currentVenueGeoLong = $currentVenue->venue->geolong;
 				//insert data into database
-				if (mysql_selectdb("footprint")) {
-					$result = mysql_query("insert into destinations (userid, foursquarevid, checkintime, foursquareurl, geolat, geolong, foursquarecheckinid, venuename) values ('".$_SESSION['currentUserID']."', '".$currentVID."', '".$currentVenueCheckinTime."', '".$currentVenueLongURL."', '".$currentVenueGeoLat."', '".$currentVenueGeoLong."', '".$currentFoursquareCheckinID."', '".$currentVenueName."')");
-					//echo("number of affected rows:".mysql_num_rows($result));
-				}
+				$result = mysql_query("insert into destinations (userid, foursquarevid, checkintime, foursquareurl, geolat, geolong, foursquarecheckinid, venuename) values ('".$_SESSION['currentUserID']."', '".$currentVID."', '".$currentVenueCheckinTime."', '".$currentVenueLongURL."', '".$currentVenueGeoLat."', '".$currentVenueGeoLong."', '".$currentFoursquareCheckinID."', '".$currentVenueName."')");
+				//echo("number of affected rows:".mysql_num_rows($result));
 			}
 		}
 	}
