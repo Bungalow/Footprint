@@ -18,7 +18,6 @@
 			<a href="/logout.php">Logout</a>
 			<div class="clear"></div>
 		</div>
-		<div class="pxspace"></div>
 		<div class="navbar">
 			<a href="/"><div class="button">Home</div></a>
 			<a href="/"><div class="button">Mypage</div></a>

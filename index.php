@@ -55,8 +55,13 @@ tmpl('header');
 	<div class="achievments">
 		<h1>Achievments</h1>
 		<div class="clear"></div>
-
-	
+		<?php
+		foreach($user_info['badges'] as $badge){
+		?>
+		<img src="<?php echo $badge['icon']; ?>"/>
+		<?php
+		}
+		?>	
 		<div class="clear"></div>
 	</div>
 	
