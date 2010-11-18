@@ -29,7 +29,7 @@ tmpl('header');
 		<a href="http://foursquare.com"><input type="button" name="groovybtn2" class="groovy" value="Join Foursquare" title=""></a>
 	</div>
 	
-<?php }else{ ?>
+<?php }else{ // user is logged in ?>
 	
 	<?php
 	//get mileage info
@@ -43,52 +43,51 @@ tmpl('header');
 	?>
 	
 	<div class="userinfo">
-	<img src="img/me.jpg"/>
-	<div class="inner">
-		<h1><?php echo $user_info['firstname']; ?> <?php echo $user_info['lastname']; ?></h1><br/>
-		<div id="stat">
-			<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
+		<img src="img/me.jpg"/>
+		<div class="inner">
+			<h1><?php echo $user_info['firstname']; ?> <?php echo $user_info['lastname']; ?></h1><br/>
+			<div id="stat">
+				<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
+			</div>
+			<div class="clear"></div>
 		</div>
-		<div class="clear"></div>
-	</div>
 	</div>
 	<div class="achievments">
 		<h1>Achievments</h1>
 		<div class="clear"></div>
-			<?php
-			foreach($user_info['badges'] as $badge){
-			?>
-			<img src="<?php echo $badge['icon']; ?>"/>
-			<?php
-			}
-			?>
-		
-			<div class="clear"></div>
+		<?php
+		foreach($user_info['badges'] as $badge){
+		?>
+		<img src="<?php echo $badge['icon']; ?>"/>
+		<?php
+		}
+		?>
+	
+		<div class="clear"></div>
 	</div>
 	
 	<div class="footprint">
-	<!--<h2>Footprint:UserName</h2>-->
-	<h2>Your Footprint:</h2>
-	<i>How you get to where you go affects the environment.</i>
-	<div id="headerInfo">
-		<div id="mileageDetails">
-			<div class='headerRow'>Total Miles: <span id='totalMileage' class='mileageSum'><?php echo($totalMileage);?></span></div>
-			<div class='headerRow'>Self-powered Miles: <span id='selfPowMileage' class='mileageSum'><?php echo($selfPowMileage);?></span></div>
-			<div class='headerRow'>Mass Transit Miles: <span id='massTransitMileage' class='mileageSum'><?php echo($massTransMileage);?></span></div>
-			<div class='headerRow'>Driving Miles: <span id='carMileage' class='mileageSum'><?php echo($carMileage);?></span></div>
-		</div>
-		<div id="accomplishmentsCont">
-			<div class="accomplishment">
-				<?php
-					/* this messaging should be dynamic based on heuristics that we specify
-					 * 
-					 */
-				?>
-				In the past 14 days, you've racked up <span class='mileageSum'><?php echo($selfPowMileage);?></span> miles on foot, which is <span class='mileageSum'>##</span> more than your previous 14 day total.  Nice work!
+		<h2>Your Footprint:</h2>
+		<em>How you get to where you go affects the environment.</em>
+		<div id="headerInfo">
+			<div id="mileageDetails">
+				<div class='headerRow'>Total Miles: <span id='totalMileage' class='mileageSum'><?php echo($totalMileage);?></span></div>
+				<div class='headerRow'>Self-powered Miles: <span id='selfPowMileage' class='mileageSum'><?php echo($selfPowMileage);?></span></div>
+				<div class='headerRow'>Mass Transit Miles: <span id='massTransitMileage' class='mileageSum'><?php echo($massTransMileage);?></span></div>
+				<div class='headerRow'>Driving Miles: <span id='carMileage' class='mileageSum'><?php echo($carMileage);?></span></div>
 			</div>
+			<div id="accomplishmentsCont">
+				<div class="accomplishment">
+					<?php
+						/* this messaging should be dynamic based on heuristics that we specify
+						 * 
+						 */
+					?>
+					In the past 14 days, you've racked up <span class='mileageSum'><?php echo($selfPowMileage);?></span> miles on foot, which is <span class='mileageSum'>##</span> more than your previous 14 day total.  Nice work!
+				</div>
+			</div>
+			<br clear="all" />
 		</div>
-		<br clear="all" />
-	</div>
 	<script type='text/javascript' language='JavaScript'>
 		var homebaseGeoLat = <?php echo($_SESSION["homebase"]["geolat"]); ?>;
 		var homebaseGeoLong = <?php echo($_SESSION["homebase"]["geolat"]); ?>; 
