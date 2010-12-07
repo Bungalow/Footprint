@@ -45,13 +45,39 @@ $totalMileage = $selfPowMileage + $massTransMileage + $carMileage;
 <div class="inner">
 <h1><?php echo $user_info['firstname']; ?> <?php echo $user_info['lastname']; ?></h1><br/>
 <div id="stat">
-<p><b>Level:</b> 70 <b>Rank:</b> Nature God</p>
+<script type="text/javascript">
+			var chart1; // globally available
+			$(document).ready(function() {
+			chart1 = new Highcharts.Chart({
+					chart: {
+						renderTo: 'chart-container-1',
+						defaultSeriesType: 'bar'
+					},
+					title: {
+						text: 'Carbon Footprint'
+					},
+					xAxis: {
+						categories: ['Car', 'Self-powered', 'Mass Transportation']
+					},
+					yAxis: {
+						title: {
+						   text: 'Miles'
+						}
+					},
+					series: [ {
+						name: '<?php echo $user_info['firstname']; ?> <?php echo $user_info['lastname']; ?>',
+						data: [<?php echo($carMileage);?>, <?php echo($selfPowMileage);?>, <?php echo($massTransMileage);?>]
+					}]
+				});
+			});
+		</script>
+<div id="chart-container-1"></div>
 </div>
 <div class="clear"></div>
 </div>
 </div>
 <div class="achievments">
-<h1>Achievments</h1>
+<h1>Badges:</h1>
 <div class="clear"></div>
 <?php
 foreach($user_info['badges'] as $badge){
