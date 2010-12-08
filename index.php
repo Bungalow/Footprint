@@ -1,6 +1,6 @@
 <?php
 require_once('init.php');
-tmpl('header');
+include('template/header.php');
 ?>
 
 <?php if (!$logged_in) { // no user ?>

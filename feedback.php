@@ -1,10 +1,10 @@
-<html>
+<!--<html>
 <title>Footprint:Help</title>
 <head>
 <LINK href="style2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="header">
+<<div class="header">
 <img src="img/greenfoot2.png"/>
 <h1>Footprint</h1>
 </div>
@@ -23,10 +23,13 @@
 	<a href="/feedback.html"><div class="button">FeedBack</div></a>
 	<a href="/help.html"><div class="button">Help</div></a>
 </div>
-</div>
+</div>-->
+<?php
+require_once('init.php');
+include('template/header.php');
+?>
 <div class="pagebody">
 	<hr/>
-
 	<h1>Feedback</h1>
 	<hr/>
 	<div align="center" class="contenthelp">
@@ -34,6 +37,7 @@
 			<textarea name="comments" cols="50" rows="7">Enter your comments here...</textarea><br>
 		<input type="submit" value="Submit" />
 	</form>
+
 	</div>
 </div>
 </body>

@@ -1,4 +1,4 @@
-<html>
+<!--<html>
 <title>Footprint:Help</title>
 <head>
 <LINK href="style2.css" rel="stylesheet" type="text/css">
@@ -23,17 +23,21 @@
 	<a href="/feedback.html"><div class="button">FeedBack</div></a>
 	<a href="/help.html"><div class="button">Help</div></a>
 </div>
-</div>
+</div>-->
+<?php
+require_once('init.php');
+include('template/header.php');
+?>
 <div class="pagebody">
 	<hr/>
 
-	<h1>Feedback</h1>
+	<h1>Help</h1>
 	<hr/>
 	<div align="center" class="contenthelp">
-	<form method="post" action="">
-			<textarea name="comments" cols="50" rows="7">Enter your comments here...</textarea><br>
-		<input type="submit" value="Submit" />
-	</form>
+	<p>Question: A registration question?????</p>
+	<div class="tabbed">
+		<p>Answer: Something to do with <a href="http://foursquare.com">Foursquare</a>.</p>
+	</div>
 	</div>
 </div>
 </body>
